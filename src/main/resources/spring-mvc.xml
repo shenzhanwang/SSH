@@ -25,6 +25,13 @@
 	<mvc:annotation-driven>
 		<!-- 处理responseBody 里面日期类型 -->
 		<mvc:message-converters>
+			<bean class="org.springframework.http.converter.StringHttpMessageConverter">
+				<property name="supportedMediaTypes">
+					<list>
+						<value>application/json;charset=UTF-8</value>
+					</list>
+				</property>
+			</bean>
 			<bean id="fastJsonHttpMessageConverter" class="com.alibaba.fastjson.support.spring.FastJsonHttpMessageConverter">  
                 <property name="supportedMediaTypes">  
                     <list>  
@@ -41,19 +48,6 @@
 		<property name="prefix" value="/WEB-INF/content/" />
 		<property name="suffix" value=".jsp" />
 	</bean>
-
-	<!-- 处理请求时返回json字符串的中文乱码问题 -->
-	<mvc:annotation-driven>
-		<mvc:message-converters>
-			<bean class="org.springframework.http.converter.StringHttpMessageConverter">
-				<property name="supportedMediaTypes">
-					<list>
-						<value>application/json;charset=UTF-8</value>
-					</list>
-				</property>
-			</bean>
-		</mvc:message-converters>
-	</mvc:annotation-driven>
 
 	<!-- 文件上传 -->
 	<bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver" p:defaultEncoding="UTF-8">
