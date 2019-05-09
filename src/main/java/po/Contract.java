@@ -20,6 +20,7 @@ import javax.persistence.Table;
 //合同表
 @Entity
 @Table(name="合同信息表")
+@DynamicUpdate(true)
 public class Contract {
 	@Id @Column(name="contractid")
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
